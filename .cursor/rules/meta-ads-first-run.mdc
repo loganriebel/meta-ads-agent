@@ -1,0 +1,24 @@
+---
+description: Reminds agents to finish template setup before running the Meta ads pipeline.
+globs:
+  - meta-ads-config.yaml
+  - .cursor/skills/meta-ads*.md
+  - intake/**
+  - research/**
+  - strategy/**
+  - creative/**
+  - copy/**
+  - campaign-drafts/**
+---
+
+# Meta Ads Agent — first-run gate
+
+Before producing intake, strategy, creative, copy, or API payload drafts for this repo:
+
+1. Read **`meta-ads-config.yaml`**. If you see placeholder values such as `YOUR_BUSINESS_NAME`, `yourdomain.com`, `YOUR_TONE`, or `YOUR_AUDIENCE`, **stop** and walk the user through **SETUP.md** (or **meta-ads-01-intake**). Do not invent a brand or domain.
+
+2. Ensure **`.cursor/rules/meta-ads-brand-voice.mdc`** matches your real audience and tone, and **`AGENTS.md`** is filled in for positioning and compliance.
+
+3. Read **`.cursor/rules/meta-ads-safety.mdc`** before any build, review, or budget recommendation.
+
+4. After configuration is real (not placeholder), use **meta-ads.md** as the router and open **only** the stage skill for the current step.

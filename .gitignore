@@ -1,0 +1,25 @@
+# Local config overrides (optional — template ships meta-ads-config.yaml with placeholders)
+# meta-ads-config.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Secrets — never commit
+**/secrets/**
+*.pem
+*credentials*
+
+# Large exports (keep samples in examples/)
+metrics/exports/*.csv
+!metrics/exports/.gitkeep

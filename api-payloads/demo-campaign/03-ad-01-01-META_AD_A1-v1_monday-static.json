@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "status": "draft",
+    "reviewed_by_human": false,
+    "slug": "demo-campaign",
+    "entity_type": "ad",
+    "warning": "Upload creative assets separately; link_data is simplified draft"
+  },
+  "endpoint": "/v21.0/act_REPLACE_ME/ads",
+  "method": "POST",
+  "body": {
+    "name": "META_AD_A1-v1_monday-static",
+    "adset_id": "{{adset_id}}",
+    "status": "PAUSED",
+    "creative": {
+      "object_story_spec": {
+        "page_id": "PAGE_REPLACE_ME",
+        "link_data": {
+          "message": "Still building the Monday deck at 8pm? Marketing managers use SignalBoard for one Monday-ready view. 14-day free trial.",
+          "name": "One dashboard for Monday's meeting",
+          "description": "14-day free trial",
+          "link": "https://signalboard.example/trial?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo-campaign&utm_content=A1-v1",
+          "call_to_action": {
+            "type": "SIGN_UP"
+          }
+        }
+      }
+    }
+  },
+  "notes": {
+    "parent_ad_set": "META_OUTCOME_LEADS_interest_monday_20260518",
+    "creative_ref": "creative/demo-campaign.md#A1-v1"
+  }
+}

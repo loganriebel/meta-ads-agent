@@ -1,0 +1,41 @@
+{
+  "_meta": {
+    "status": "draft",
+    "reviewed_by_human": false,
+    "slug": "demo-campaign",
+    "entity_type": "ad_set",
+    "warning": "Replace campaign_id and verify daily_budget currency units in Meta docs"
+  },
+  "endpoint": "/v21.0/act_REPLACE_ME/adsets",
+  "method": "POST",
+  "body": {
+    "name": "META_OUTCOME_LEADS_interest_monday_20260518",
+    "campaign_id": "{{campaign_id}}",
+    "daily_budget": 5000,
+    "billing_event": "IMPRESSIONS",
+    "optimization_goal": "OFFSITE_CONVERSIONS",
+    "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+    "status": "PAUSED",
+    "targeting": {
+      "geo_locations": [
+        "US",
+        "CA",
+        "GB",
+        "AU"
+      ],
+      "age_min": 25,
+      "age_max": 54,
+      "interests": [
+        "Digital marketing",
+        "HubSpot",
+        "Google Analytics"
+      ]
+    },
+    "promoted_object": {
+      "pixel_id": "PIXEL_REPLACE_ME"
+    }
+  },
+  "notes": {
+    "parent_campaign": "META_OUTCOME_LEADS_demo-campaign_20260518"
+  }
+}

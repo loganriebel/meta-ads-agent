@@ -1,0 +1,83 @@
+# Meta Ads Agent Configuration
+# ─────────────────────────────────────────────────────────────────────────────
+# SETUP REQUIRED: Replace every value marked ← with your own information.
+# The pipeline agent will detect placeholder values on first run. See SETUP.md.
+# ─────────────────────────────────────────────────────────────────────────────
+
+business:
+  name: "YOUR_BUSINESS_NAME" # ← e.g. "Acme Analytics"
+  domain: "yourdomain.com" # ← no https://, no trailing slash
+  primary_offer_url: "https://yourdomain.com/trial" # ← landing page for ads
+
+meta:
+  account_id: "" # ← Meta ad account ID (optional until launch)
+  pixel_id: "" # ← Meta pixel ID (optional)
+  page_id: "" # ← Facebook Page ID for ads (optional)
+  instagram_actor_id: "" # ← if running IG placements (optional)
+  api_mode: "draft_only" # always draft_only in this template — no live calls
+
+brand_voice:
+  tone: "YOUR_TONE" # ← e.g. "direct, proof-led, no hype"
+  audience: "YOUR_AUDIENCE" # ← e.g. "B2B marketing managers at SaaS companies 50-500 employees"
+  topics:
+    - "YOUR_PRIMARY_TOPIC"
+    - "YOUR_TOPIC_2"
+
+campaign_defaults:
+  objective: "OUTCOME_LEADS" # OUTCOME_LEADS | OUTCOME_SALES | OUTCOME_TRAFFIC
+  buying_type: "AUCTION"
+  bid_strategy: "LOWEST_COST_WITHOUT_CAP" # or COST_CAP with cap in ad set
+  placements:
+    - "facebook_feed"
+    - "instagram_feed"
+    - "instagram_stories"
+    - "facebook_reels"
+  attribution_setting: "7d_click_1d_view"
+  daily_budget_usd: 50 # per ad set during test phase
+  campaign_budget_optimization: false
+  advantage_plus_audience: false
+
+budget_guardrails:
+  max_daily_budget_usd: 500 # hard cap for recommendations
+  max_scale_increase_percent: 30 # per scale action
+  min_days_before_kill: 3 # unless spend threshold hit
+  min_spend_before_decision_usd: 30 # per ad/ad set
+  learning_phase_min_conversions: 50 # Meta learning guidance
+
+naming:
+  pattern: "META_{objective}_{audience}_{angle}_{date}"
+  date_format: "%Y%m%d"
+  separator: "_"
+
+metrics_thresholds:
+  target_cpa_usd: 75
+  target_roas: 2.5 # set null or omit if lead-gen only
+  kill_cpa_multiplier: 1.5 # kill if CPA > target * this
+  scale_roas_multiplier: 1.2 # scale if ROAS > target * this
+  min_impressions: 1000
+  frequency_fatigue: 3.0
+
+utm:
+  source: "facebook"
+  medium: "paid_social"
+  campaign_template: "{campaign_slug}"
+  content_template: "{ad_name}"
+
+paths:
+  intake: "intake/"
+  research: "research/"
+  strategy: "strategy/"
+  creative: "creative/"
+  copy: "copy/"
+  campaign_drafts: "campaign-drafts/"
+  api_payloads: "api-payloads/"
+  metrics: "metrics/"
+  analysis: "analysis/"
+  learnings: "learnings/"
+  qa_reports: "qa-reports/"
+
+meta_ads_tools:
+  validate_config: "meta_ads_tools/validate_config.py"
+  validate_artifact: "meta_ads_tools/validate_artifact.py"
+  build_payloads: "meta_ads_tools/build_payloads.py"
+  analyze_metrics: "meta_ads_tools/analyze_metrics.py"

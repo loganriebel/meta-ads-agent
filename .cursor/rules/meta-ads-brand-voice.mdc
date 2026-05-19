@@ -1,0 +1,61 @@
+---
+description: Brand voice and paid social creative standards. Replace placeholder sections after clone. Activates in creative/, copy/, campaign-drafts/.
+globs:
+  - creative/**
+  - copy/**
+  - campaign-drafts/**
+  - intake/**
+---
+
+# Brand voice (customize for your business)
+
+## Who we are
+
+Replace this section with one paragraph about your company or product. Pull details from `meta-ads-config.yaml` (`business.name`, `brand_voice`) so paid creative stays consistent with the pipeline.
+
+## Voice attributes
+
+**Direct**: lead with the hook. No filler. First line should stop the scroll.
+
+**Proof-led**: use numbers, logos, or specifics when you have them. Do not invent stats.
+
+**Conversational-professional**: write like a smart colleague, not a billboard.
+
+**Specific**: name the audience's job, tool, or pain — avoid "businesses everywhere."
+
+## Voice attributes we avoid
+
+**Hype**: no "revolutionary," "game-changing," or empty superlatives.
+
+**Policy risk**: no guaranteed results, before/after health claims, or personal attribute callouts in copy.
+
+**Generic AI**: no "In today's fast-paced world," "unlock," "elevate," or "dive in."
+
+## Audience
+
+Primary: [replace — role, context, what success looks like]
+
+Secondary: [optional]
+
+## Creative standards (Meta)
+
+- **Feed**: 1:1 or 4:5; text overlay minimal; readable on mobile.
+- **Stories/Reels**: 9:16; captions on video; hook in first 3 seconds.
+- **Primary text**: short variant (≤125 chars) + long variant when useful.
+- **Headlines**: ≤40 chars when possible; one clear benefit.
+- **CTA button**: match funnel (Learn More, Sign Up, etc.).
+
+## Formatting for ad copy
+
+- One idea per variant.
+- Bullets only when listing concrete benefits.
+- UTM parameters per `utm` in `meta-ads-config.yaml`.
+
+## Words and phrases
+
+**Prefer**: start, fix, compare, track, ship, demo, trial
+**Avoid**: leverage, utilize, unlock, elevate (unless quoting)
+
+---
+
+After you edit this file, keep `brand_voice` in `meta-ads-config.yaml` aligned.

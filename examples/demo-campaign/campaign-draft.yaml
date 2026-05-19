@@ -1,0 +1,91 @@
+_meta:
+  slug: demo-campaign
+  status: draft
+  created: "2026-05-18"
+
+campaign:
+  name: META_OUTCOME_LEADS_demo-campaign_20260518
+  objective: OUTCOME_LEADS
+  status: PAUSED
+  buying_type: AUCTION
+
+ad_sets:
+  - name: META_OUTCOME_LEADS_interest_monday_20260518
+    daily_budget_usd: 50
+    targeting:
+      geo_locations: ["US", "CA", "GB", "AU"]
+      age_min: 25
+      age_max: 54
+      interests: ["Digital marketing", "HubSpot", "Google Analytics"]
+    ads:
+      - name: META_AD_A1-v1_monday-static
+        creative_ref: creative/demo-campaign.md#A1-v1
+        copy:
+          primary_text: "Still building the Monday deck at 8pm? Marketing managers use SignalBoard for one Monday-ready view. 14-day free trial."
+          headline: "One dashboard for Monday's meeting"
+          description: "14-day free trial"
+          cta: SIGN_UP
+          url: "https://signalboard.example/trial?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo-campaign&utm_content=A1-v1"
+        utm:
+          source: facebook
+          medium: paid_social
+          campaign: demo-campaign
+          content: A1-v1
+      - name: META_AD_A2-v1_monday-video
+        creative_ref: creative/demo-campaign.md#A2-v1
+        copy:
+          primary_text: "Your Monday report shouldn't start in Excel. See pipeline and paid in one dashboard."
+          headline: "Replace the spreadsheet stack"
+          description: "Free trial"
+          cta: SIGN_UP
+          url: "https://signalboard.example/trial?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo-campaign&utm_content=A2-v1"
+        utm:
+          source: facebook
+          medium: paid_social
+          campaign: demo-campaign
+          content: A2-v1
+
+  - name: META_OUTCOME_LEADS_lal_monday_20260518
+    daily_budget_usd: 50
+    targeting:
+      custom_audiences: ["LAL_1pct_trial_signups"]
+    ads:
+      - name: META_AD_B1-v1_monday-static
+        creative_ref: creative/demo-campaign.md#A1-v1
+        copy:
+          primary_text: "Still building the Monday deck at 8pm? Try SignalBoard free for 14 days."
+          headline: "One dashboard for Monday's meeting"
+          description: "14-day free trial"
+          cta: SIGN_UP
+          url: "https://signalboard.example/trial?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo-campaign&utm_content=B1-v1"
+        utm:
+          source: facebook
+          medium: paid_social
+          campaign: demo-campaign
+          content: B1-v1
+
+  - name: META_OUTCOME_LEADS_retarget_proof_20260518
+    daily_budget_usd: 50
+    targeting:
+      custom_audiences: ["website_visitors_7d"]
+    ads:
+      - name: META_AD_C1-v1_retarget-proof
+        creative_ref: creative/demo-campaign.md#C1-v1
+        copy:
+          primary_text: "You visited SignalBoard — ready to try the trial? Teams cut weekly reporting time with one dashboard."
+          headline: "Pick up where you left off"
+          description: "Free trial"
+          cta: SIGN_UP
+          url: "https://signalboard.example/trial?utm_source=facebook&utm_medium=paid_social&utm_campaign=demo-campaign&utm_content=C1-v1"
+        utm:
+          source: facebook
+          medium: paid_social
+          campaign: demo-campaign
+          content: C1-v1
+
+launch_checklist:
+  - pixel firing verified on /trial thank-you page
+  - landing page mobile OK (<3s LCP target)
+  - UTMs tested in staging
+  - human approved qa-reports/demo-campaign.md
+  - all campaigns created PAUSED in Meta

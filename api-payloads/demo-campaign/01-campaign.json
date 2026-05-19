@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "status": "draft",
+    "reviewed_by_human": false,
+    "slug": "demo-campaign",
+    "entity_type": "campaign",
+    "warning": "Set meta.account_id before any real API use"
+  },
+  "endpoint": "/v21.0/act_REPLACE_ME/campaigns",
+  "method": "POST",
+  "body": {
+    "name": "META_OUTCOME_LEADS_demo-campaign_20260518",
+    "objective": "OUTCOME_LEADS",
+    "status": "PAUSED",
+    "special_ad_categories": [],
+    "buying_type": "AUCTION"
+  }
+}

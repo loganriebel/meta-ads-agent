@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "status": "draft",
+    "reviewed_by_human": false,
+    "slug": "demo-campaign",
+    "entity_type": "ad_set",
+    "warning": "Replace campaign_id and verify daily_budget currency units in Meta docs"
+  },
+  "endpoint": "/v21.0/act_REPLACE_ME/adsets",
+  "method": "POST",
+  "body": {
+    "name": "META_OUTCOME_LEADS_lal_monday_20260518",
+    "campaign_id": "{{campaign_id}}",
+    "daily_budget": 5000,
+    "billing_event": "IMPRESSIONS",
+    "optimization_goal": "OFFSITE_CONVERSIONS",
+    "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+    "status": "PAUSED",
+    "targeting": {
+      "custom_audiences": [
+        "LAL_1pct_trial_signups"
+      ]
+    },
+    "promoted_object": {
+      "pixel_id": "PIXEL_REPLACE_ME"
+    }
+  },
+  "notes": {
+    "parent_campaign": "META_OUTCOME_LEADS_demo-campaign_20260518"
+  }
+}

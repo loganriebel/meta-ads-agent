@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/loganriebel/meta-ads-agent/schemas/api_payload.schema.json",
+  "title": "MetaApiPayloadDraft",
+  "type": "object",
+  "required": ["_meta", "endpoint", "method", "body"],
+  "properties": {
+    "_meta": {
+      "type": "object",
+      "required": ["status", "reviewed_by_human", "slug", "entity_type"],
+      "properties": {
+        "status": { "const": "draft" },
+        "reviewed_by_human": { "type": "boolean" },
+        "slug": { "type": "string" },
+        "entity_type": { "enum": ["campaign", "ad_set", "ad"] },
+        "warning": { "type": "string" }
+      }
+    },
+    "endpoint": { "type": "string" },
+    "method": { "type": "string", "enum": ["POST", "GET"] },
+    "body": { "type": "object" }
+  }
+}

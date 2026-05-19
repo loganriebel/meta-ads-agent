@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/loganriebel/meta-ads-agent/schemas/metrics_row.schema.json",
+  "title": "MetricsRow",
+  "type": "object",
+  "required": ["ad_name", "spend"],
+  "properties": {
+    "ad_name": { "type": "string" },
+    "ad_set_name": { "type": "string" },
+    "campaign_name": { "type": "string" },
+    "spend": { "type": "number", "minimum": 0 },
+    "impressions": { "type": "number", "minimum": 0 },
+    "clicks": { "type": "number", "minimum": 0 },
+    "conversions": { "type": "number", "minimum": 0 },
+    "cpa": { "type": "number", "minimum": 0 },
+    "roas": { "type": "number", "minimum": 0 },
+    "frequency": { "type": "number", "minimum": 0 },
+    "ctr": { "type": "number", "minimum": 0 }
+  }
+}

@@ -1,0 +1,39 @@
+---
+description: Safety guardrails for Meta ads agent — no live API, no unsupervised spend changes.
+globs:
+  - campaign-drafts/**
+  - api-payloads/**
+  - analysis/**
+  - .cursor/skills/meta-ads-06-build-drafts.md
+  - .cursor/skills/meta-ads-07-review-launch-pack.md
+  - .cursor/skills/meta-ads-08-performance-analysis.md
+---
+
+# Meta Ads Agent — safety rules
+
+## Never do from this repo
+
+1. **Call the Meta Marketing API** to create, update, or pause campaigns, ad sets, or ads.
+2. **Change live budgets** or bidding without explicit human action outside this repo.
+3. **Store or commit** access tokens, app secrets, or credentials.
+4. **Present draft payloads as live** — always label `api-payloads/` as **DRAFT — HUMAN REVIEW REQUIRED**.
+
+## Always do
+
+1. Set `meta.api_mode` to `draft_only` in config; refuse if user asks to go live from the agent.
+2. **Human approval** after each pipeline stage before the next.
+3. **Flag policy risks**: personal attributes, discriminatory targeting language, prohibited claims, restricted categories.
+4. **Respect budget_guardrails** in recommendations (max daily budget, max scale %, min days before kill).
+5. **Use exported metrics or sample data** for analysis — do not claim account access you do not have.
+
+## Performance recommendations
+
+- Recommend **pause/kill** only when thresholds in config are met (or user overrides).
+- Recommend **scale** with capped increases per `budget_guardrails.max_scale_increase_percent`.
+- Note **learning phase** when conversion volume is below `learning_phase_min_conversions`.
+
+## API payload drafts
+
+- Include `_meta.status: "draft"` in generated JSON.
+- Include `_meta.reviewed_by_human: false` until user confirms.
+- Document required fields the human must verify (account ID, pixel, page, creative assets uploaded to Meta).
