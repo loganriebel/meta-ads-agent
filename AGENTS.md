@@ -1,5 +1,5 @@
 # Business context (fill in on first clone)
-
+ 
 This file gives agents **your** positioning so intake, strategy, creative, and copy stay aligned. Replace every bracketed placeholder.
 
 ## Company or product
