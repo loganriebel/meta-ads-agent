@@ -127,6 +127,4 @@ Same staged-skill idea as my [seo-content-stack](https://github.com/loganriebel/
 
 To run it yourself: [SETUP.md](SETUP.md), then ask Cursor to start a new Meta campaign via the **meta-ads** router.
 
-## License
-
-MIT
+Interested in doing this for your business or looking to add powerful AI GTM flows? Email me at loganriebel@gmail.com or connect with me at https://www.linkedin.com/in/logan-riebel/
