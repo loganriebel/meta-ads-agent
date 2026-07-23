@@ -1,6 +1,6 @@
 # Meta Ads Agent
 
-**The public reference implementation of my staged-skill approach to Meta paid social:** research, ship many variants, kill losers, scale winners, and log what worked for the next flight. Every step ends with a human approval. API payloads are drafts only — nothing goes live from this repo.
+**The public reference implementation of my staged-skill approach to Meta paid social:** research, ship many variants, kill losers, scale winners, and log what worked for the next flight. Every step ends with a human approval. API payloads are drafts only, so nothing goes live from this repo.
 
 Run it end to end in Cursor and you get a chain of files you can diff and review, not a chain of chats. This project is part of my [agent portfolio](https://github.com/loganriebel). Walk through [`demo-campaign`](examples/demo-campaign/) for a full fictional example from intake to learnings, or read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the production version is built.
 
@@ -88,13 +88,13 @@ flowchart LR
 
 Fictional B2B SaaS trial, end to end:
 
-- [Intake](intake/demo-campaign.md) — goals and guardrails
-- [Strategy](strategy/demo-campaign.md) — structure and decision rules
-- [Copy](copy/demo-campaign.md) — variants with UTMs
-- [Campaign draft](campaign-drafts/demo-campaign.yaml) — build file for tooling
-- [API payloads](api-payloads/demo-campaign/) — draft JSON, human review required
-- [Analysis](analysis/demo-campaign.md) — scale and pause recommendations
-- [Learnings](learnings/hooks.md) — what to run again
+- [Intake](intake/demo-campaign.md): goals and guardrails
+- [Strategy](strategy/demo-campaign.md): structure and decision rules
+- [Copy](copy/demo-campaign.md): variants with UTMs
+- [Campaign draft](campaign-drafts/demo-campaign.yaml): build file for tooling
+- [API payloads](api-payloads/demo-campaign/): draft JSON, human review required
+- [Analysis](analysis/demo-campaign.md): scale and pause recommendations
+- [Learnings](learnings/hooks.md): what to run again
 
 That is the model: markdown and YAML you can diff, review, and hand off.
 
@@ -123,16 +123,16 @@ Python 3.10+ is optional for the validators. You can run the process by hand and
 
 ## Where this went next
 
-This repo is the readable version of the idea. The approach graduated into a production agent I run on Claude Code skills, and a few things changed in the process:
+This repo is the readable version of the idea. The production agent runs on Claude Code skills, and four things changed on the way there:
 
-- **Creative is generated, not just briefed.** The creative stage renders finished images through fal.ai against brand fixtures, instead of handing off production briefs.
-- **Ad-policy screening is its own gate.** No creative reaches the publish stage without passing it.
-- **Meta writes go through a proxy.** This is the important one. The agent never holds the access token. Every write passes through a proxy that allowlists what can be created, forces a paused state, rejects anything trying to go active, and caps ad-set budget. The agent cannot spend money on its own, by construction rather than by good behavior.
-- **Results write back.** Performance classifications feed a patterns file that briefs the next sprint, so the loop is the product rather than a nice-to-have final stage.
+- The creative stage renders finished images through fal.ai against brand fixtures, instead of handing a production brief to a designer.
+- Ad-policy screening became its own stage. No creative reaches publish without passing it.
+- Every Meta write goes through a proxy that holds the access token, allowlists what can be created, forces a paused state, rejects anything trying to go active, and caps ad-set budget. Turning that off takes a human editing the proxy, which is the friction I want on that decision.
+- Performance classifications write back to a patterns file that briefs the next sprint, so each run starts from the last one's data.
 
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) covers the stage map, the proxy guarantee, and the pruning rules in more detail.
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) covers the stage map, the proxy, and the pruning rules.
 
-**Try it:** the [Meta Ads Agent demo](https://makometrics.com/meta-ads-agent) runs the research and creative stages on any brand you give it — enter a site, and it researches the brand, drafts seven ad concepts, and renders up to five Meta-style creatives. Nothing publishes to Meta.
+**Try it:** the [Meta Ads Agent demo](https://makometrics.com/meta-ads-agent) runs the research and creative stages on any brand. Enter a site and it researches the brand, drafts seven ad concepts, and renders up to five Meta-style creatives. Nothing publishes to Meta.
 
 The production repo is private while I work through the live-spend gates. This one stays public as the reference.
 
