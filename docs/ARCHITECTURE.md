@@ -55,16 +55,26 @@ want on that particular decision.
 
 Naive automation kills ads too fast and traps the account in Meta's learning phase, which needs
 roughly 50 optimization events in 7 days to exit. Restarting that clock repeatedly costs more than
-running a mediocre ad. So the kill rules follow delivery mechanics rather than dashboards:
+running a mediocre ad. So the gate on any scale decision is conversion results:
 
-- **No raw CTR sorts.** Sorting by CTR on small samples selects for noise.
-- **An impression floor** before any creative is eligible to be judged.
-- **A Bayesian comparison** against the ad-set baseline rather than a threshold on a raw rate.
+- **Conversion volume, not impressions, and never a raw CTR sort.** An agent ranking creatives by
+  click-through rate at 300 impressions will hand you a winner with total confidence, and it will
+  be handing you variance.
+- **Meta's own floor is the anchor.** Roughly 50 results in the week after the last significant
+  edit. Below that, the ad set is learning limited by Meta's definition, and asking which creative
+  won is asking a question the data can't answer yet.
+- **A significance test on the gap** before anything gets scaled, so a difference has to clear the
+  noise to count as a difference.
+- **Three outcomes, not two.** Winner, loser, or undecided, enforced as a database constraint with
+  a written rationale attached to each call. Undecided is a recorded state, not a missing row. It's
+  also the answer most dashboards refuse to give you, because a dashboard that says "not yet" looks
+  broken and an agent that says "not yet" looks slow. Both are being accurate.
 - **Ad-level pauses only.** Killing a creative pauses the ad. Ad-set structural changes need a much
   higher bar, a minimum runtime and a budget floor, and get batched weekly rather than applied
   continuously.
-- **"Undecided" is the verdict most dashboards refuse to give you.** Anything that hasn't cleared
-  the bar stays undecided.
+- **Which event you count is the operator's call.** A skincare brand at a $30 average order value
+  and a B2B service at $4,000 don't gate on the same event, don't need the same volume, and
+  shouldn't use the same patience.
 
 ## Explore quota
 
