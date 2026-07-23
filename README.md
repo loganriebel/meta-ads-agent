@@ -1,8 +1,8 @@
 # Meta Ads Agent
 
-**A repeatable Meta ads playbook I run in Cursor:** research, ship many variants, kill losers, scale winners, and log what worked for the next flight. Every step ends with my approval. Nothing goes live from the repo alone.
+**The public reference implementation of my staged-skill approach to Meta paid social:** research, ship many variants, kill losers, scale winners, and log what worked for the next flight. Every step ends with a human approval. API payloads are drafts only — nothing goes live from this repo.
 
-This project is part of my [agent portfolio](https://github.com/loganriebel). It shows how I use staged AI skills and files on disk to run paid social faster without losing process or audit trail. Walk through [`demo-campaign`](examples/demo-campaign/) for a full fictional example from intake to learnings.
+Run it end to end in Cursor and you get a chain of files you can diff and review, not a chain of chats. This project is part of my [agent portfolio](https://github.com/loganriebel). Walk through [`demo-campaign`](examples/demo-campaign/) for a full fictional example from intake to learnings, or read [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for how the production version is built.
 
 ---
 
@@ -118,6 +118,23 @@ I built it for teams where marketing, finance, and legal all want to see why a c
 | `AGENTS.md`, `CLAUDE.md` | Business context and campaign inventory |
 
 Python 3.10+ is optional for the validators. You can run the process by hand and still keep the same file structure.
+
+---
+
+## Where this went next
+
+This repo is the readable version of the idea. The approach graduated into a production agent I run on Claude Code skills, and a few things changed in the process:
+
+- **Creative is generated, not just briefed.** The creative stage renders finished images through fal.ai against brand fixtures, instead of handing off production briefs.
+- **Ad-policy screening is its own gate.** No creative reaches the publish stage without passing it.
+- **Meta writes go through a proxy.** This is the important one. The agent never holds the access token. Every write passes through a proxy that allowlists what can be created, forces a paused state, rejects anything trying to go active, and caps ad-set budget. The agent cannot spend money on its own, by construction rather than by good behavior.
+- **Results write back.** Performance classifications feed a patterns file that briefs the next sprint, so the loop is the product rather than a nice-to-have final stage.
+
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) covers the stage map, the proxy guarantee, and the pruning rules in more detail.
+
+**Try it:** the [Meta Ads Agent demo](https://makometrics.com/meta-ads-agent) runs the research and creative stages on any brand you give it — enter a site, and it researches the brand, drafts seven ad concepts, and renders up to five Meta-style creatives. Nothing publishes to Meta.
+
+The production repo is private while I work through the live-spend gates. This one stays public as the reference.
 
 ---
 
